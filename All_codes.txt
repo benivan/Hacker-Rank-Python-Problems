@@ -1,0 +1,53 @@
+*****************************************
+BeautifulSoup(src,'html.parser')
+******************************************
+******************************************
+from urllib.request import urlopen
+from urllib.error import HTTPError
+from bs4 import BeautifulSoup
+def getTital(url):
+    try:
+        html = urlopen(url)
+    except HTTPError as e:
+        return None
+    try:
+        abc=BeautifulSoup(html.read(),'html.parser')
+        title=abc.body.h1
+    except AttributeError as e:
+        return None
+    return title
+title=getTital("https://www.oreilly.com/library/view/web-scraping-with/9781491985564/")
+if title==None:
+    print("Title Could not be found")
+else:
+    print(title)
+********************************************
+********************************************
+
+import requests
+from bs4 import BeautifulSoup
+result=requests.get("https://www.google.co.in/")
+src=result.content
+soup=BeautifulSoup(src,'html.parser')
+links=soup.find_all("a")
+for link in links:
+    if "About" in link.text:
+        print(link)
+        print(link.attrs['href'])
+
+***********************************************
+***********************************************
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+html = urlopen("http://www.pythonscraping.com/pages/warandpeace.html")
+data = BeautifulSoup(html,"html.parser")
+namelist = data.find_all("span" , {"class" : "green"})
+namelist1= data.find_all("span",{"class":"red"})
+for name in namelist1:
+    print(name.get_text())
+**********************************************
+**********************************************
+
+
+
+
