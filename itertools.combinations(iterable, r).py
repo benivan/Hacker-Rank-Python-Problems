@@ -37,14 +37,15 @@ HACK 2
 
 
 
-from itertools import combinations
-abc=[str(x)for x in input().split()]
-two_words=list(combinations(sorted(abc[0].upper()),int(abc[1])))
-str_input=abc[0]
-for i in sorted(str_input):
-    print(i.upper())
-for j in two_words:
-        print("".join(j))
+def combination_value(a,b):
+    for i in range (1,b+1):
+        for j in a:
+            abc=list(combinations(a,i))
+        for k in abc:
+            print(''.join(k))
 
 
 
+
+value=[str(x) for x in input().split()]
+combination_value(sorted(value[0].upper()),int(value[1]))
