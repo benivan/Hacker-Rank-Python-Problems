@@ -1,8 +1,9 @@
 from statistics import median
-n=int(input())
+num=int(input())
 X=[int(x )for x in input().split()]
 Y=[int(y) for y in input().split()]
 XY=sorted([])
+n=sum(Y)
 for i in range(n):
     XY+=[X[i]]*Y[i]
 if n%2 !=0:
